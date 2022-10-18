@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', App\Http\Livewire\Welcome::class);
+Route::get('/{slug}/blogs', \App\Http\Livewire\CategoryBlogs::class)->name('blogs.show');
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +25,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
