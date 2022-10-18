@@ -10,11 +10,20 @@ class CategoryBlogs extends Component
     public $category;
     public $slug;
 
+    public $modal= false;
+
+    protected $listeners = ['launchHqModal'];
+
     public function mount($slug)
     {
         $this->slug  =  $slug;
     }
 
+    public function launchHqModal()
+    {
+        $this->modal=true;
+    }
+    
     public function render()
     {
         $this->category = Category::with('blogs')->where('slug', $this->slug)->first();

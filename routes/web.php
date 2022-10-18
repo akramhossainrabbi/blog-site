@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Http\Livewire\Welcome::class);
 Route::get('/{slug}/blogs', \App\Http\Livewire\CategoryBlogs::class)->name('blogs.show');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])->group(function () {
+    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
 });
 
+Route::get('/redirects', function(){
+	return redirect(Redirect::intended()->getTargetUrl());
+	// You can replace above line with the following to return to previous page
+	return back();	// or return redirect()->back();
+});

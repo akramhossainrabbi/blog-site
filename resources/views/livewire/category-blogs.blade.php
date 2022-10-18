@@ -4,79 +4,40 @@
         <div class="container px-6 py-10 mx-auto">
             <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">{{ $title }}</h1>
     
-            <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            How to use sticky note for problem solving
-                        </a>
-                        
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
-                    </div>
+            <!-- Card Grid -->
+            <div class="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                @foreach($blogs as $blog)
+                <!-- Card Item -->
+                <div class="my-8 rounded shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-300 hover:-translate-y-1">
+                    <!-- Clickable Area -->
+                    <a wire:click='$emit("openModal", "blog-show", @json(["id" => $blog->id]))' class="cursor-pointer">
+                        <figure>
+                            <!-- Image -->
+                            @if(!$blog->image)
+                            <img src="https://via.placeholder.com/150" class="rounded-t h-72 w-full object-cover" />
+                            @else
+                            <img src="post.image + '?auto=format&fit=crop&w=400&q=50'" class="rounded-t h-72 w-full object-cover" />
+                            @endif
+                            <figcaption class="p-4">
+                                <!-- Title -->
+                                <p class="text-lg mb-4 font-bold leading-relaxed text-gray-800 dark:text-gray-300">
+                                    <!-- Post Title -->
+                                    {{ $blog->title }}
+                                </p>
+
+                                <!-- Description -->
+                                <small
+                                    class="leading-5 text-gray-500 dark:text-gray-400">
+                                    <!-- Post Description -->
+                                    {{ $blog->small_description}}
+                                </small>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
-    
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            How to use sticky note for problem solving
-                        </a>
-    
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
-                    </div>
-                </div>
-    
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            Morning routine to boost your mood
-                        </a>
-    
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 25 November 2020</span>
-                    </div>
-                </div>
-    
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            All the features you want to know
-                        </a>
-    
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 30 September 2020</span>
-                    </div>
-                </div>
-    
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            Minimal workspace for your inspirations
-                        </a>
-    
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 13 October 2019</span>
-                    </div>
-                </div>
-    
-                <div class="lg:flex">
-                    <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
-    
-                    <div class="flex flex-col justify-between py-6 lg:mx-6">
-                        <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                            What do you want to know about Blockchane
-                        </a>
-                        
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
     </section>
 </div>

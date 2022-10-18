@@ -20,7 +20,8 @@ class CreateBlogsTable extends Migration
             $table->text('small_description');
             $table->text('details');
             $table->binary('image')->nullable();
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

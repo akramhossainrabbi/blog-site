@@ -13,7 +13,7 @@ class Blog extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'slug', 'small_description', 'details', 'image'];
+    protected $fillable = ['title', 'slug', 'small_description', 'details', 'image', 'user_id'];
 
     public function comments()
     {
