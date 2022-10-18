@@ -18,8 +18,13 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+        <div class="min-h-screen bg-gray-100">
+            @include('partisals.nav-bar')
+
+            <div class="font-sans text-gray-900 antialiased">
+                @yield('content')
+            </div>
         </div>
+        @livewireScripts
     </body>
 </html>
