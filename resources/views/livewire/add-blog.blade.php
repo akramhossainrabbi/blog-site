@@ -2,7 +2,7 @@
     <!-- Author: FormBold Team -->
     <!-- Learn More: https://formbold.com -->
     <div class="mx-auto w-full max-w-[550px]">
-      <form wire:submit.prevent="save">
+      <form wire:submit.prevent="save" enctype="multipart/form-data">
 
         <div class="mb-5">
           <label
@@ -47,7 +47,7 @@
             rows="4"
             wire:model="small_description"
             id="small_description"
-            placeholder="Type your small_description"
+            placeholder="Type your small description"
             class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           ></textarea>
           @error('small_description') <span class="error">{{ $message }}</span> @enderror
@@ -69,7 +69,7 @@
             @error('details') <span class="error">{{ $message }}</span> @enderror
           </div>
         <div>
-          <button
+          <button type="submit"
             class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
           >
             Submit

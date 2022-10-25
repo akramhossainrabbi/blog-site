@@ -15,7 +15,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @livewireStyles
     </head>
     <body>
         <div class="min-h-screen bg-gray-100">
@@ -27,5 +27,6 @@
         </div>
         @livewire('livewire-ui-modal')
         @livewireScripts
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </body>
 </html>

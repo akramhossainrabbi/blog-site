@@ -22,6 +22,9 @@
                         <table class="items-center bg-transparent w-full border-collapse ">
                           <thead>
                             <tr>
+                              <th class="px-6 w-8 h-8 mr-3 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                img
+                              </th>
                               <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                   Blog Title
                                </th>
@@ -31,8 +34,14 @@
                           <tbody>
                             @foreach($blogs as $blog)
                             <tr>
-                                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                                  {{ $blog->title }}
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                  <div class="relative w-10 h-10 mr-3 md:block">
+                                  <img class="object-cover w-full h-full" src="{{ asset('storage/'.$blog->image)}}" alt="" loading="lazy" />
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                  </div>
+                                </th>
+                                <th wire:click='$emit("openModal", "blog-show", @json(["id" => $blog->id]))' class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                  <span style="color: blue; cursor: pointer;">{{ $blog->title }}</span>
                                 </th>
                               </tr>
                             @endforeach

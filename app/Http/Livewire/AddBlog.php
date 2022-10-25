@@ -27,12 +27,12 @@ class AddBlog extends ModalComponent
             'image' => 'image|max:1024', // 1MB Max
         ]);
  
-        $validatedData['image'] = $this->image->store('photos');
+        $validatedData['image'] = $this->image->store('photos', 'public');
         $validatedData['user_id'] = Auth::user()->id;
 
         Blog::create($validatedData);
 
-        $this->reset();
+        $this->closeModal();
         $this->emit('blogAdded');
     }
 

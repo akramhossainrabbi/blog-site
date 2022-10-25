@@ -18,7 +18,7 @@ class BlogList extends Component
     public function render()
     {
         return view('livewire.blog-list',[
-            'blogs' => Blog::where('user_id', Auth::user()->id)->get(),
+            'blogs' => Blog::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get(),
         ]);
     }
 }
