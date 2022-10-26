@@ -30,7 +30,7 @@ class BlogShow extends ModalComponent
                 'user_id'=> Auth::user()->id,
             ]);
 
-            $this->mount();
+            $this->body = '';
         }else{
             return redirect('login');
         }

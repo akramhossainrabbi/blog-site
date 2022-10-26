@@ -36,7 +36,7 @@
       <form wire:submit.prevent="comment()">
           <div class="mb-5">
               <textarea  rows="4" class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              wire:model="body"></textarea>
+              wire:model.lazy="body"></textarea>
               @error('body') <span class="error">{{ $message }}</span> @enderror
           </div>
           <div class="mb-5">
